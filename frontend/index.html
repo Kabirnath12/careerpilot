@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CareerPilot | AI Career Assistant</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="toast" class="toast"></div>
+<header><a class="brand" href="#" onclick="show('home')">CareerPilot</a><nav><button onclick="show('analyzer')">Resume Analyzer</button><button onclick="show('jobs')">Job Match</button><button onclick="show('dashboard')">Dashboard</button><button id="loginBtn" onclick="openAuth()">Login</button><button id="logoutBtn" class="hidden">Logout</button></nav></header>
+<main>
+<section id="home" class="hero"><div><span class="eyebrow">AI career assistant</span><h1>Turn your experience into your next opportunity.</h1><p>Analyze a resume, identify strengths and gaps, and match your profile with relevant roles from one career workspace.</p><div class="actions"><button class="primary" onclick="show('analyzer')">Analyze resume</button><button class="secondary" onclick="show('jobs')">Explore jobs</button></div></div><div class="hero-card"><div><b>92%</b><span>Profile strength</span></div><div><b>14</b><span>Recommended skills</span></div><div><b>8</b><span>Matched roles</span></div></div></section>
+
+<section id="analyzer" class="view hidden"><div class="head"><div><span class="eyebrow">Career analysis</span><h2>Resume Analyzer</h2></div></div><div class="analyzer"><div class="panel"><h3>Paste your resume</h3><p>Use plain text for the strongest local analysis.</p><textarea id="resume" placeholder="Paste your resume text here..."></textarea><button class="primary" onclick="analyze()">Analyze profile</button></div><div id="analysis" class="panel result"><h3>Your analysis will appear here</h3><p>We'll calculate a profile score, detect skills and suggest improvements.</p></div></div></section>
+
+<section id="jobs" class="view hidden"><div class="head"><div><span class="eyebrow">Opportunities</span><h2>Recommended jobs</h2></div></div><div class="filters"><input id="jobSearch" placeholder="Search role or skill"><select id="jobLevel"><option value="">All levels</option><option>Junior</option><option>Mid</option><option>Senior</option></select></div><div id="jobGrid" class="grid"></div></section>
+
+<section id="dashboard" class="view hidden"><div class="head"><div><span class="eyebrow">Workspace</span><h2>Career dashboard</h2></div></div><div id="dash"></div></section>
+</main>
+
+<div id="authModal" class="modal hidden"><div class="box"><button class="close" onclick="closeM('authModal')">×</button><h2 id="authTitle">Sign in</h2><p>Save your career analysis and job matches.</p><div class="tabs"><button id="ltab" class="active" onclick="mode='login';setAuth()">Login</button><button id="rtab" onclick="mode='register';setAuth()">Register</button></div><form id="authForm"><input id="name" class="reg hidden" placeholder="Full name"><input id="email" type="email" required placeholder="Email"><input id="password" type="password" required placeholder="Password"><button class="primary full">Continue</button></form></div></div>
+<script src="script.js"></script></body></html>
