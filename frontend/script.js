@@ -1,4 +1,4 @@
-const API="http://localhost:5000/api";let user=JSON.parse(localStorage.getItem("careerPilotUser")||"null"),mode="login",jobs=[],analysis=null;
+const API="https://careerpilot-backend-ex20.onrender.com/api";let user=JSON.parse(localStorage.getItem("careerPilotUser")||"null"),mode="login",jobs=[],analysis=null;
 const $=id=>document.getElementById(id);function esc(s=""){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}function toast(m){$("toast").textContent=m;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2200)}
 async function api(path,opt={}){let h={"Content-Type":"application/json",...(opt.headers||{})};if(user?.token)h.Authorization=`Bearer ${user.token}`;let r=await fetch(API+path,{...opt,headers:h}),d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.message||"Request failed");return d}
 function show(id){["home","analyzer","jobs","dashboard"].forEach(x=>$(x).classList.toggle("hidden",x!==id));if(id==="jobs")loadJobs();if(id==="dashboard")renderDash();scrollTo(0,0)}
